@@ -15,3 +15,24 @@
 2. pip install -r requirements.txt
 3. pip freeze > requirements.lock.text
 ```
+
+# 運用例
+## コンマ
+1行にフォーマットされる
+```python
+urlpatterns = [
+    path('backend/', views.Backend.as_view())
+]
+```
+末尾にコンマがあるので、1行にフォーマットされ”ない”
+```python
+urlpatterns = [
+    path('backend/', views.Backend.as_view()),
+]
+```
+## フォーマットをすり抜ける
+```python
+# fmt: off
+すり抜けたい処理
+# fmt: on
+```
