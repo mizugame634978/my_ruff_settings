@@ -1,8 +1,8 @@
 # 変更後vscodeを再起動しないと、拡張機能がうまく働かないことがある
 [tool.ruff]
-line-length = 160
+line-length = 120
 indent-width = 4
-target-version = "py311"
+target-version = "py311"# プロジェクトによって変える
 
 [tool.ruff.lint]
 # 使用するルール
@@ -25,4 +25,19 @@ ignore = [
     "F401", #importしたけど使ってない
     "C416", # list()で表せるものを内包表記で行っている
     "I001", # 参照されていない
+    "UP006",  # pyupgrade: quote normalization
 ]
+
+
+# flake8-quotesプラグインのオプション
+# ※tool.ruff.formatで十分かもしれないので、後で消す可能性あり
+[tool.ruff.lint.flake8-quotes]
+inline-quotes = "single"
+docstring-quotes = "double"
+
+# フォーマット時の設定
+[tool.ruff.format]
+quote-style = "single" # シングルクォートを使用する。ただし、クォート3つで囲まれた文字列とdocstringにはダブルクォートを使用
+line-ending = "lf"
+docstring-code-format = true
+skip-magic-trailing-comma = false # カンマ区切りの引数などについて、1行にまとめられる場合でもまとめない
